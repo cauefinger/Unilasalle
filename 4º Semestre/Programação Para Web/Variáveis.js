@@ -5,9 +5,10 @@
 let logado = true;
 
 if (logado){
-    let segredo = 'senha123456';
+    let segredo = 'não posde acessar fora do bloco';
     var publico = 'pode acessar fora do bloco';
-}
+}   const nao_mexer = 'variável que não pode ser alterada';
 
 console.log(publico);
 // console.log(segredo);    *** ERRO AQUI
+console.log(nao_mexer);
