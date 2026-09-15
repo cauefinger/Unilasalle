@@ -8,3 +8,5 @@ idade = int(input("Digite sua idade: "))
 
 
 apresentacao = print(f"Você tem {nome} e {idade} anos para iniciar a programação. ")
+
+
