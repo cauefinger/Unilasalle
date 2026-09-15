@@ -1,75 +1,79 @@
-const carrinho = [
+const produtos = [
 
-    {nome: "Camiseta polo", preco: 89.90, quantidade: 2},
-    {nome: "Camiseta social", preco: 223.90, quantidade: 1},
-    {nome: "Camiseta casual", preco: 59.90, quantidade: 1},
-    {nome: "Calça esportiva", preco: 110.99, quantidade: 2}
+    {
+        nome: "Camiseta polo",
+        preco: 89.90
+    },
+
+    {
+        nome: "Camiseta social",
+        preco: 223.90
+    },
+
+    {
+        nome: "Camiseta casual",
+        preco: 59.90
+    },
+
+    {
+        nome: "Calça esportiva",
+        preco: 110.99
+    }
 
 ];
 
-function exibirItens(carrinho) {
-    for (const item of carrinho) {
 
-        const subtotal = item.preco * item.quantidade;
+let quantidadeCarrinho = 0;
 
-        console.log(`Produto: ${item.nome}`);
-        console.log(`Quantidade: ${item.quantidade}`);
-        console.log(`Subtotal: R$ ${subtotal.toFixed(2)}`);
-        console.log("------------------------");
+
+function mostrarProdutos() {
+
+    const areaProdutos = document.getElementById("produtos");
+
+    for (const produto of produtos) {
+
+        areaProdutos.innerHTML += `
+
+            <div class="col-12 col-md-6 col-xl-4">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">
+                            ${produto.nome}
+                        </h5>
+
+                        <p class="card-text">
+                            R$ ${produto.preco.toFixed(2)}
+                        </p>
+
+                        <button 
+                            class="btn btn-primary"
+                            onclick="adicionarCarrinho()">
+                            Adicionar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
     }
 }
 
 
-const calcularTotal = (carrinho) => {
+function adicionarCarrinho() {
 
-    let valorTotal = 0;
+    quantidadeCarrinho++;
 
-    for (const item of carrinho) {
+    document.getElementById("contador").textContent = quantidadeCarrinho;
 
-        const subtotal = item.preco * item.quantidade;
+    alert("Produto adicionado ao carrinho!");
 
-        valorTotal = valorTotal + subtotal;
-
-    }
-    return valorTotal;
-};
-
-function aplicarCupom(valorTotal, cupom) {
-
-    switch (cupom) {
-
-        case "DESCONTO10":
-
-            return valorTotal - (valorTotal * 0.10);
-
-
-        case "MEGADESCONTO":
-
-            return valorTotal - (valorTotal * 0.20);
-
-
-        default:
-
-            if (cupom) {
-
-                console.log("Cupom inválido.");
-
-            }
-
-            return valorTotal;
-    }
 }
 
 
-exibirItens(carrinho);
-
-const valorTotal = calcularTotal(carrinho);
-
-console.log(`Valor total bruto: R$ ${valorTotal.toFixed(2)}`);
-
-const cupom = "DESCONTO10";
-
-const valorFinal = aplicarCupom(valorTotal, cupom);
-
-console.log(`Valor final a pagar: R$ ${valorFinal.toFixed(2)}`);
-
+mostrarProdutos();
