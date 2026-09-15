@@ -1,0 +1,12 @@
+.card {
+    height: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card button {
+    margin-top: auto;
+}
